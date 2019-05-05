@@ -1,0 +1,61 @@
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import internal.GlobalVariable as GlobalVariable
+
+//Sign in to Github
+WebUI.openBrowser('')
+
+WebUI.navigateToUrl('https://github.com/')
+
+WebUI.click(findTestObject('Page_The worlds leading software development platform  GitHub/a_Signin'))
+
+WebUI.setText(findTestObject('Page_Sign in to GitHub  GitHub/input_Username or email address_login'), 'username')
+
+WebUI.setEncryptedText(findTestObject('Page_Sign in to GitHub  GitHub/input_Forgot password_password'), 'password')
+
+WebUI.click(findTestObject('Page_Sign in to GitHub  GitHub/input_Forgot password_commit'))
+
+//Go to Github Homepage
+WebUI.click(findTestObject('Page_GitHub/summary_Sign out_Header-link'))
+
+//Select Menu New Gist
+WebUI.scrollToElement(findTestObject('Page_GitHub/a_New gist'), 0)
+
+WebUI.click(findTestObject('Page_GitHub/a_New gist'))
+
+//Fill New Gist
+WebUI.setText(findTestObject('Page_Create a new Gist/input_Instantly share code notes and snippets_gistdescription'), 'Hello World in PHP')
+
+WebUI.setText(findTestObject('Page_Create a new Gist/input_Instantly share code notes and snippets_gistcontentsname'), 'HelloWorld')
+
+WebUI.setText(findTestObject('Page_Create a new Gist/div_1'), 'echo "hello world!";')
+
+//Save Gist
+WebUI.click(findTestObject('Page_Create a new Gist/button_Create public gist'))
+
+WebUI.delay(5)
+
+//Edit Gist
+WebUI.click(findTestObject('Page_Hello World in PHP/a_Edit'))
+
+//Click Update
+WebUI.click(findTestObject('Page_Editing HelloWorld/button_Update public gist'))
+
+WebUI.delay(5)
+
+//Click Edit and Cancel
+WebUI.click(findTestObject('Page_Hello World in PHP/a_Edit_1'))
+
+WebUI.click(findTestObject('Page_Editing HelloWorld/a_Cancel'))
+
